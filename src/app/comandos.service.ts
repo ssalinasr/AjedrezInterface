@@ -20,7 +20,7 @@ const httpOptions = {
 })
 export class ComandosService {
 
-  url = "/ServletPrueba/ServicioAjedrez";
+  url = "/AjedrezWeb/ServletEnlace";
 
   constructor(private http: HttpClient) { }
 

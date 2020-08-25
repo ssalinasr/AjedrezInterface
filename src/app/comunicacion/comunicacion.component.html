@@ -1,8 +1,13 @@
 <div>
-    <h3>Movimiento:
-      <input [(ngModel)]="comando" placeholder="comando" (keyup.enter)="enviarComando()"/>
-      <input type=Button id='BtnEnviar' value="Enviar"/>
-    </h3>
-    <h2>{{comando}}</h2>
-    <h2>{{resultado}}</h2>
-  </div>
+  <h3>Movimiento Jugador 1:
+    <input id="comando_1" placeholder="comando" (keyup.enter)="enviarComando($event, 'comando_1')"/>
+  </h3>
+  <h3>Movimiento Jugador 2:
+    <input id="comando_2" placeholder="comando" (keyup.enter)="enviarComando($event, 'comando_2')"/>
+  </h3>
+  <h2>{{comando}}</h2>
+  <h2>{{resultado}}</h2>
+  <div style="text-align:center">
+    <input type=Button id='cargar' value="Cargar Partida"  (click)="loadImage()"/>
+</div>
+</div>

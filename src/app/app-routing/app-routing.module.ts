@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BienvenidaComponent } from './bienvenida/bienvenida.component'
-import { TableroComponent } from './tablero/tablero.component'
+import { BienvenidaComponent } from '../bienvenida/bienvenida.component';
+import { TableroComponent } from '../tablero/tablero.component';
 
 const appRoutes: Routes = [
   { path: 'tablero', component: TableroComponent},
