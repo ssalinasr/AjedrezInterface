@@ -2,14 +2,21 @@
     
 }
 
+h1{
+    color: rgb(228, 228, 228);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+    text-align: center;
+  }
+
 #jugador1 {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 #jugador2 {
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
 }
 
 .posicion1 {

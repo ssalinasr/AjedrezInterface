@@ -11,6 +11,9 @@ import { Celda } from '../celda';
 })
 export class ComunicacionComponent implements OnInit {
 
+  isDisabled1:boolean = false;
+  isDisabled2:boolean = true;
+
   comando = "Prueba";
   resultado = "";
   filas = [];
@@ -22,6 +25,23 @@ export class ComunicacionComponent implements OnInit {
     if(tipo == "comando_1"){
       this.http.respuestaLlamdoServlet(tipo+":"+event.target.value).subscribe((data:any)=>{
         console.log(data.resultado);
+        console.log(data.mate_1);
+        console.log(data.mate_2);
+        if(data.resultado == "true"){
+          this.isDisabled2 = false;
+          this.isDisabled1 = true;
+        }
+        if(data.mate_1 == "true"){
+          this.isDisabled1 = true;
+          this.isDisabled2 = true;
+          document.getElementById("resgame").innerHTML = "El jugador 1 es el ganador";
+        }
+        if(data.mate_2 == "true"){
+          this.isDisabled1 = true;
+          this.isDisabled2 = true;
+          document.getElementById("resgame").innerHTML = "El jugador 2 es el ganador";
+        }
+
         this.updateImage();
       });
     }
@@ -29,11 +49,36 @@ export class ComunicacionComponent implements OnInit {
       if(tipo == "comando_2"){
         this.http.respuestaLlamdoServlet(tipo+":"+event.target.value).subscribe((data:any)=>{
           console.log(data.resultado);
+          console.log(data.mate_1);
+          console.log(data.mate_2);
+
+          if(data.resultado == "true"){
+            this.isDisabled1 = false;
+            this.isDisabled2 = true;
+          }
+          if(data.mate_1 == "true"){
+            this.isDisabled1 = true;
+            this.isDisabled2 = true;
+            document.getElementById("resgame").innerHTML = "El jugador 1 es el ganador";
+          }
+          if(data.mate_2 == "true"){
+            this.isDisabled1 = true;
+            this.isDisabled2 = true;
+            document.getElementById("resgame").innerHTML = "El jugador 2 es el ganador";
+          }
+
+
           this.updateImage();
         });
       }
     }
+ }
 
+ restartImage(){
+  this.isDisabled1 = false;
+  this.isDisabled2 = true;
+  this.loadImage();
+  
  }
 
  updateImage(){

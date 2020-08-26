@@ -7,15 +7,15 @@
 <div style="text-align:center">
 <table id="tabAje" width="57%" class="table table-center">
     <tr>
-        <th class="jugador" id="jugador2" width="57%" colspan="8">{{jugador1.name | uppercase}}</th>
+        <th class="jugador" id="jugador2" width="57%" colspan="8">{{jugador2.name | uppercase}}</th>
     </tr>
 
-    <tr *ngFor="let fila of filas">
+    <tr *ngFor="let fila of filas.reverse()">
         <td *ngFor="let celda of fila" class={{celda.clase}} id={{celda.id}}></td>
     </tr>
 
     <tr>
-        <th class="jugador" id="jugador1" width="57%" colspan="8">{{jugador2.name | uppercase}}</th>
+        <th class="jugador" id="jugador1" width="57%" colspan="8">{{jugador1.name | uppercase}}</th>
     </tr>
     
 </table>

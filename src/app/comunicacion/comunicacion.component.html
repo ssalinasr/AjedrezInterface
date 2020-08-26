@@ -1,13 +1,17 @@
 <div>
   <h3>Movimiento Jugador 1:
-    <input id="comando_1" placeholder="comando" (keyup.enter)="enviarComando($event, 'comando_1')"/>
+    <input id="comando_1" placeholder="comando" [disabled] = "isDisabled1" (keyup.enter)="enviarComando($event, 'comando_1')"/>
   </h3>
   <h3>Movimiento Jugador 2:
-    <input id="comando_2" placeholder="comando" (keyup.enter)="enviarComando($event, 'comando_2')"/>
+    <input id="comando_2" placeholder="comando" [disabled] = "isDisabled2" (keyup.enter)="enviarComando($event, 'comando_2')"/>
   </h3>
-  <h2>{{comando}}</h2>
+  <p id = "resgame">Aún no hay ganador</p>
   <h2>{{resultado}}</h2>
   <div style="text-align:center">
     <input type=Button id='cargar' value="Cargar Partida"  (click)="loadImage()"/>
+</div>
+<br>
+<div style="text-align:center">
+  <input type=Button id='reiniciar' value="Reiniciar Partida"  (click)="restartImage()"/>
 </div>
 </div>
