@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ComandosService } from '../comandos.service';
 import { Celda } from '../celda';
@@ -10,6 +10,9 @@ import { Celda } from '../celda';
   providers: [ComandosService]
 })
 export class ComunicacionComponent implements OnInit {
+
+  @Input() name1:string;
+  @Input() name2:string;
 
   isDisabled1:boolean = false;
   isDisabled2:boolean = true;
@@ -27,10 +30,12 @@ export class ComunicacionComponent implements OnInit {
         console.log(data.resultado);
         console.log(data.mate_1);
         console.log(data.mate_2);
+        
         if(data.resultado == "true"){
           this.isDisabled2 = false;
           this.isDisabled1 = true;
         }
+        
         if(data.mate_1 == "true"){
           this.isDisabled1 = true;
           this.isDisabled2 = true;
@@ -40,6 +45,13 @@ export class ComunicacionComponent implements OnInit {
           this.isDisabled1 = true;
           this.isDisabled2 = true;
           document.getElementById("resgame").innerHTML = "El jugador 2 es el ganador";
+        }
+
+        if(data.jaque_1 == "true"){
+          alert(this.name1 + " el rey está en jaque, debe moverlo o taparlo");
+        }
+        if(data.jaque_2 == "true"){
+          alert(this.name1 + " ha dado un jaque");
         }
 
         this.updateImage();
@@ -56,6 +68,7 @@ export class ComunicacionComponent implements OnInit {
             this.isDisabled1 = false;
             this.isDisabled2 = true;
           }
+          
           if(data.mate_1 == "true"){
             this.isDisabled1 = true;
             this.isDisabled2 = true;
@@ -66,7 +79,13 @@ export class ComunicacionComponent implements OnInit {
             this.isDisabled2 = true;
             document.getElementById("resgame").innerHTML = "El jugador 2 es el ganador";
           }
-
+          
+          if(data.jaque_2 == "true"){
+            alert(this.name2 + " el rey está en jaque, debe moverlo o taparlo");
+          }
+          if(data.jaque_1 == "true"){
+            alert(this.name2 + " ha dado un jaque");
+          }
 
           this.updateImage();
         });
